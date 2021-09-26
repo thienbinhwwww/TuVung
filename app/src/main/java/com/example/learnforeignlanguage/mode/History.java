@@ -2,16 +2,18 @@ package com.example.learnforeignlanguage.mode;
 
 public class History {
     private int idHistory;
-    private int idCustom;
+    private int idTopic;
     private int idUser;
+    private String time;
 
     public History() {
     }
 
-    public History(int idHistory, int idCustom, int idUser) {
+    public History(int idHistory, int idTopic, int idUser,String time) {
         this.idHistory = idHistory;
-        this.idCustom = idCustom;
+        this.idTopic = idTopic;
         this.idUser = idUser;
+        this.time = time;
     }
 
     public int getIdHistory() {
@@ -22,12 +24,12 @@ public class History {
         this.idHistory = idHistory;
     }
 
-    public int getIdCustom() {
-        return idCustom;
+    public int getIdTopic() {
+        return idTopic;
     }
 
-    public void setIdCustom(int idCustom) {
-        this.idCustom = idCustom;
+    public void setIdTopic(int idTopic) {
+        this.idTopic = idTopic;
     }
 
     public int getIdUser() {
@@ -36,5 +38,13 @@ public class History {
 
     public void setIdUser(int idUser) {
         this.idUser = idUser;
+    }
+
+    public String getTime() {
+        return time;
+    }
+
+    public void setTime(String time) {
+        this.time = time;
     }
 }

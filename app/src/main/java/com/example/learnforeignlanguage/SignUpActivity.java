@@ -47,7 +47,6 @@ public class SignUpActivity extends AppCompatActivity {
         String phoneNumber = edt_phoneNumber.getText().toString();
         String password = edt_password.getText().toString();
         String passwordRetype = edt_passwordRetype.getText().toString();
-        listUser = userDao.getAllUser();
 
         while (true){
             if(!(ck(userName)&&ck(email)&&ck(phoneNumber)&&ck(password)&&ck(passwordRetype))){
@@ -58,21 +57,11 @@ public class SignUpActivity extends AppCompatActivity {
                 Toast.makeText(this,"Mật khẩu không khớp",Toast.LENGTH_LONG).show();
                 break;
             }
-            for (int i=0;i<listUser.size();i++){
-                if (userName.equals(listUser.get(i).getUserName())){
-                    Toast.makeText(this,"UserName đã tồn tại",Toast.LENGTH_LONG).show();
-                    break;
-                }
-                if (email.equals(listUser.get(i).getEmail())){
-                    Toast.makeText(this,"Email đăng ký đã tồn tại",Toast.LENGTH_LONG).show();
-                    break;
-                }
-                if (phoneNumber.equals(listUser.get(i).getPhoneNumber())){
-                    Toast.makeText(this,"Số điện thoại đăng ký đã tồn tại",Toast.LENGTH_LONG).show();
-                    break;
-                }
+            listUser = userDao.timUserName(edt_userName.getText().toString());
+            if(!(listUser.size()==0)){
+                Toast.makeText(this,"User name đã tồn tại",Toast.LENGTH_LONG).show();
+                break;
             }
-
             User user = new User();
             user.setUserName(userName);
             user.setEmail(email);

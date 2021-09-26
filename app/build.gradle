@@ -1,6 +1,8 @@
+
 plugins {
     id 'com.android.application'
 }
+apply plugin: 'realm-android'
 
 android {
     compileSdkVersion 30
@@ -8,7 +10,8 @@ android {
 
     defaultConfig {
         applicationId "com.example.learnforeignlanguage"
-        minSdkVersion 19
+        applicationId "com.mongodb.realmsnippets"
+        minSdkVersion 21
         targetSdkVersion 30
         versionCode 1
         versionName "1.0"
@@ -27,9 +30,13 @@ android {
         targetCompatibility JavaVersion.VERSION_1_8
     }
 }
+realm {
+    syncEnabled = true
+}
 
 dependencies {
 
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation 'androidx.appcompat:appcompat:1.2.0'
     implementation 'com.google.android.material:material:1.2.1'
     implementation 'androidx.constraintlayout:constraintlayout:2.0.3'

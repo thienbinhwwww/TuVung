@@ -9,10 +9,9 @@ import android.view.View;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
-import com.example.learnforeignlanguage.dao.CustomDetailDao;
 import com.example.learnforeignlanguage.dao.VocabularyDao;
-import com.example.learnforeignlanguage.mode.CustomDetail;
 import com.example.learnforeignlanguage.mode.Vocabulary;
 
 import java.util.ArrayList;
@@ -21,9 +20,7 @@ import java.util.Random;
 
 public class GameIIActivity extends AppCompatActivity {
     SharedPreferences sharedPreferences;
-    CustomDetailDao customDetailDao;
     VocabularyDao vocabularyDao;
-    List<CustomDetail> listCustomDetail;
     List<Vocabulary> listVocabulary;
     List<String> listMeans = new ArrayList<>();
     TextView btnA,btnB,btnC,btnD,tvVocabulary,tvGameIISTT;
@@ -47,15 +44,12 @@ public class GameIIActivity extends AppCompatActivity {
     }
 
     private void strat() {
-        int id = sharedPreferences.getInt("idCustom",0);
-        listCustomDetail = customDetailDao.timKiem(id);
-        for (int i=0;i<listCustomDetail.size();i++){
-            listVocabulary.add(vocabularyDao.timKiem(listCustomDetail.get(i).getIdVocabulary()).get(0));
-        }
+
         createGame();
     }
 
     private void createGame() {
+        listVocabulary = vocabularyDao.timKiemTopic(sharedPreferences.getInt("idTopic",0));
         listMeans.clear();
         for (int i=0;i<listVocabulary.size();i++){
             listMeans.add(listVocabulary.get(i).getMeans());
@@ -84,8 +78,7 @@ public class GameIIActivity extends AppCompatActivity {
                         public void onClick(View view) {
                             poit++;
                             temp++;
-                            tv_d.setText("Bạn trả lời đúng");
-                            dialogD.show();
+                            Toast.makeText(GameIIActivity.this, "Bạn trả lời đúng", Toast.LENGTH_SHORT).show();
                             createGame();
                         }
                     });
@@ -94,8 +87,7 @@ public class GameIIActivity extends AppCompatActivity {
                         public void onClick(View view) {
 
                             temp++;
-                            tv_d.setText("Bạn trả sai rồi");
-                            dialogD.show();
+                            Toast.makeText(GameIIActivity.this, "Bạn trả sai rồi", Toast.LENGTH_SHORT).show();
                             createGame();
                         }
                     });
@@ -104,8 +96,7 @@ public class GameIIActivity extends AppCompatActivity {
                         public void onClick(View view) {
 
                             temp++;
-                            tv_d.setText("Bạn trả sai rồi");
-                            dialogD.show();
+                            Toast.makeText(GameIIActivity.this, "Bạn trả sai rồi", Toast.LENGTH_SHORT).show();
                             createGame();
                         }
                     });
@@ -114,8 +105,7 @@ public class GameIIActivity extends AppCompatActivity {
                         public void onClick(View view) {
 
                             temp++;
-                            tv_d.setText("Bạn trả sai rồi");
-                            dialogD.show();
+                            Toast.makeText(GameIIActivity.this, "Bạn trả sai rồi", Toast.LENGTH_SHORT).show();
                             createGame();
                         }
                     });
@@ -126,8 +116,7 @@ public class GameIIActivity extends AppCompatActivity {
                         public void onClick(View view) {
                             poit++;
                             temp++;
-                            tv_d.setText("Bạn trả lời đúng");
-                            dialogD.show();
+                            Toast.makeText(GameIIActivity.this, "Bạn trả lời đúng", Toast.LENGTH_SHORT).show();
                             createGame();
                         }
                     });
@@ -136,8 +125,7 @@ public class GameIIActivity extends AppCompatActivity {
                         public void onClick(View view) {
 
                             temp++;
-                            tv_d.setText("Bạn trả sai rồi");
-                            dialogD.show();
+                            Toast.makeText(GameIIActivity.this, "Bạn trả sai rồi", Toast.LENGTH_SHORT).show();
                             createGame();
                         }
                     });
@@ -146,8 +134,7 @@ public class GameIIActivity extends AppCompatActivity {
                         public void onClick(View view) {
 
                             temp++;
-                            tv_d.setText("Bạn trả sai rồi");
-                            dialogD.show();
+                            Toast.makeText(GameIIActivity.this, "Bạn trả sai rồi", Toast.LENGTH_SHORT).show();
                             createGame();
                         }
                     });
@@ -156,8 +143,7 @@ public class GameIIActivity extends AppCompatActivity {
                         public void onClick(View view) {
 
                             temp++;
-                            tv_d.setText("Bạn trả sai rồi");
-                            dialogD.show();
+                            Toast.makeText(GameIIActivity.this, "Bạn trả sai rồi", Toast.LENGTH_SHORT).show();
                             createGame();
                         }
                     });
@@ -168,8 +154,7 @@ public class GameIIActivity extends AppCompatActivity {
                         public void onClick(View view) {
                             poit++;
                             temp++;
-                            tv_d.setText("Bạn trả lời đúng");
-                            dialogD.show();
+                            Toast.makeText(GameIIActivity.this, "Bạn trả lời đúng", Toast.LENGTH_SHORT).show();
                             createGame();
                         }
                     });
@@ -178,8 +163,7 @@ public class GameIIActivity extends AppCompatActivity {
                         public void onClick(View view) {
 
                             temp++;
-                            tv_d.setText("Bạn trả sai rồi");
-                            dialogD.show();
+                            Toast.makeText(GameIIActivity.this, "Bạn trả sai rồi", Toast.LENGTH_SHORT).show();
                             createGame();
                         }
                     });
@@ -188,8 +172,7 @@ public class GameIIActivity extends AppCompatActivity {
                         public void onClick(View view) {
 
                             temp++;
-                            tv_d.setText("Bạn trả sai rồi");
-                            dialogD.show();
+                            Toast.makeText(GameIIActivity.this, "Bạn trả sai rồi", Toast.LENGTH_SHORT).show();
                             createGame();
                         }
                     });
@@ -198,8 +181,7 @@ public class GameIIActivity extends AppCompatActivity {
                         public void onClick(View view) {
 
                             temp++;
-                            tv_d.setText("Bạn trả sai rồi");
-                            dialogD.show();
+                            Toast.makeText(GameIIActivity.this, "Bạn trả sai rồi", Toast.LENGTH_SHORT).show();
                             createGame();
                         }
                     });
@@ -210,8 +192,7 @@ public class GameIIActivity extends AppCompatActivity {
                         public void onClick(View view) {
                             poit++;
                             temp++;
-                            tv_d.setText("Bạn trả lời đúng");
-                            dialogD.show();
+                            Toast.makeText(GameIIActivity.this, "Bạn trả lời đúng", Toast.LENGTH_SHORT).show();
                             createGame();
                         }
                     });
@@ -220,8 +201,7 @@ public class GameIIActivity extends AppCompatActivity {
                         public void onClick(View view) {
 
                             temp++;
-                            tv_d.setText("Bạn trả sai rồi");
-                            dialogD.show();
+                            Toast.makeText(GameIIActivity.this, "Bạn trả sai rồi", Toast.LENGTH_SHORT).show();
                             createGame();
                         }
                     });
@@ -230,8 +210,7 @@ public class GameIIActivity extends AppCompatActivity {
                         public void onClick(View view) {
 
                             temp++;
-                            tv_d.setText("Bạn trả sai rồi");
-                            dialogD.show();
+                            Toast.makeText(GameIIActivity.this, "Bạn trả sai rồi", Toast.LENGTH_SHORT).show();
                             createGame();
                         }
                     });
@@ -240,8 +219,7 @@ public class GameIIActivity extends AppCompatActivity {
                         public void onClick(View view) {
 
                             temp++;
-                            tv_d.setText("Bạn trả sai rồi");
-                            dialogD.show();
+                            Toast.makeText(GameIIActivity.this, "Bạn trả sai rồi", Toast.LENGTH_SHORT).show();
                             createGame();
                         }
                     });
@@ -340,10 +318,7 @@ public class GameIIActivity extends AppCompatActivity {
         btnD = findViewById(R.id.btn_gameiiD);
         tvGameIISTT = findViewById(R.id.tv_gameii_stt);
         tvVocabulary = findViewById(R.id.tv_gameii_vocabulary);
-
-        customDetailDao = new CustomDetailDao(this);
         vocabularyDao = new VocabularyDao(this);
-        listCustomDetail = new ArrayList<>();
         listVocabulary = new ArrayList<>();
         sharedPreferences =getSharedPreferences("phong",MODE_PRIVATE);
         dialogD = new Dialog(this);

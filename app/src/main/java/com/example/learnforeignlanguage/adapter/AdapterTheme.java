@@ -8,15 +8,15 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import com.example.learnforeignlanguage.R;
-import com.example.learnforeignlanguage.mode.Theme;
+import com.example.learnforeignlanguage.mode.Topic;
 
 import java.util.List;
 
 public class AdapterTheme extends BaseAdapter {
-    List<Theme> list;
+    List<Topic> list;
     Context context;
 
-    public AdapterTheme(List<Theme> list, Context context) {
+    public AdapterTheme(List<Topic> list, Context context) {
         this.list = list;
         this.context = context;
     }
@@ -41,7 +41,7 @@ public class AdapterTheme extends BaseAdapter {
         view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.layout_listview_theme,viewGroup,false);
         TextView tv_theme = view.findViewById(R.id.tv_layout_listview_theme);
 
-        tv_theme.setText(list.get(i).getTheme());
+        tv_theme.setText(list.get(i).getTopic());
         return view;
     }
 }

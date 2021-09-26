@@ -10,10 +10,9 @@ import android.view.View;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
-import com.example.learnforeignlanguage.dao.CustomDetailDao;
 import com.example.learnforeignlanguage.dao.VocabularyDao;
-import com.example.learnforeignlanguage.mode.CustomDetail;
 import com.example.learnforeignlanguage.mode.Vocabulary;
 
 import java.util.ArrayList;
@@ -22,9 +21,7 @@ import java.util.Random;
 
 public class GameIActivity extends AppCompatActivity {
     SharedPreferences sharedPreferences;
-    CustomDetailDao customDetailDao;
     VocabularyDao vocabularyDao;
-    List<CustomDetail> listCustomDetail;
     List<Vocabulary> listVocabulary;
     List<String> listMeans = new ArrayList<>();
     TextView tv_Vocabulary,tv_Means,tv_stt;
@@ -34,6 +31,7 @@ public class GameIActivity extends AppCompatActivity {
     Random random = new Random();
     Dialog dialogD;
     TextView tv_d;
+    int id;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,26 +39,22 @@ public class GameIActivity extends AppCompatActivity {
         setContentView(R.layout.activity_game_i);
         
         anhXa();
-        
+
         start();
     }
 
     private void start() {
-        int id = sharedPreferences.getInt("idCustom",0);
-        listCustomDetail = customDetailDao.timKiem(id);
-        for (int i=0;i<listCustomDetail.size();i++){
-            listVocabulary.add(vocabularyDao.timKiem(listCustomDetail.get(i).getIdVocabulary()).get(0));
-        }
+        id = sharedPreferences.getInt("idTopic",0);
         createGame();
     }
 
     private void createGame() {
+        listVocabulary = vocabularyDao.timKiemTopic(id);
         listMeans.clear();
         for (int i=0;i<listVocabulary.size();i++){
             listMeans.add(listVocabulary.get(i).getMeans());
         }
         if(temp>=10){
-
             Dialog dialog = new Dialog(GameIActivity.this);
             dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
             dialog.setContentView(R.layout.layout_dialog_kq);
@@ -84,8 +78,7 @@ public class GameIActivity extends AppCompatActivity {
                     public void onClick(View view) {
                         poit++;
                         temp++;
-                        tv_d.setText("Bạn trả lời đúng");
-                        dialogD.show();
+                        Toast.makeText(GameIActivity.this, "Bạn trả lời đúng", Toast.LENGTH_SHORT).show();
                         createGame();
                     }
                 });
@@ -94,8 +87,7 @@ public class GameIActivity extends AppCompatActivity {
                     public void onClick(View view) {
 
                         temp++;
-                        tv_d.setText("Bạn trả sai rồi");
-                        dialogD.show();
+                        Toast.makeText(GameIActivity.this, "Bạn trả sai rồi", Toast.LENGTH_SHORT).show();
                         createGame();
                     }
                 });
@@ -106,8 +98,7 @@ public class GameIActivity extends AppCompatActivity {
                     public void onClick(View view) {
 
                         temp++;
-                        tv_d.setText("Bạn trả sai rồi");
-                        dialogD.show();
+                        Toast.makeText(GameIActivity.this, "Bạn trả sai rồi", Toast.LENGTH_SHORT).show();
                         createGame();
                     }
                 });
@@ -117,8 +108,7 @@ public class GameIActivity extends AppCompatActivity {
 
                         poit++;
                         temp++;
-                        tv_d.setText("Bạn trả lời đúng");
-                        dialogD.show();
+                        Toast.makeText(GameIActivity.this, "Bạn trả lời đúng", Toast.LENGTH_SHORT).show();
                         createGame();
                     }
                 });
@@ -155,10 +145,7 @@ public class GameIActivity extends AppCompatActivity {
         tv_Means = findViewById(R.id.tv_gameI_means);
         layout_tich = findViewById(R.id.conLayout_gameI_tich);
         layout_x = findViewById(R.id.conLayout_gameI_x);
-        customDetailDao = new CustomDetailDao(this);
         vocabularyDao = new VocabularyDao(this);
-        listCustomDetail = new ArrayList<>();
-        listVocabulary = new ArrayList<>();
         sharedPreferences =getSharedPreferences("phong",MODE_PRIVATE);
         dialogD = new Dialog(this);
         dialogD.requestWindowFeature(Window.FEATURE_NO_TITLE);

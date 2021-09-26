@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -12,6 +13,7 @@ import android.widget.Toast;
 import com.example.learnforeignlanguage.dao.UserDao;
 import com.example.learnforeignlanguage.mode.User;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class LoginActivity extends AppCompatActivity {
@@ -39,14 +41,15 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     public void  login(View view){
-        list = userDao.timUserName(edt_userName.getText().toString());
+         list = userDao.timUserName(edt_userName.getText().toString());
          if(list.size()==0){
              Toast.makeText(this,"Tài khoản không tồn tại",Toast.LENGTH_LONG).show();
          }else {
                 if(list.get(0).getPassword().equals(edt_pass.getText().toString())){
+                    int id = userDao.timUserName(edt_userName.getText().toString()).get(0).getIdUser();
                     editor.clear();
-                    editor.putString("userName", edt_userName.getText().toString());
-                    editor.putString("password", edt_pass.getText().toString());
+                    editor.putString("userName",edt_userName.getText().toString());
+                    editor.putInt("idUser", id);
                     editor.commit();
                     Intent intent = new Intent(this,MenuActivity.class);
                     startActivity(intent);

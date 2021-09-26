@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class HistoryDao {
-    final String DATABASE_NAME = "dataLearnForeignLanguage.sqlite";
+    final String DATABASE_NAME = "data.sqlite";
     SQLiteDatabase sqLiteDatabase;
     Activity context;
 
@@ -21,16 +21,20 @@ public class HistoryDao {
         this.context = context;
     }
 
+    // thêm history vào database
     public boolean addHistory(History history){
         sqLiteDatabase = Database.initDatabase(context,DATABASE_NAME);
-        // ghép cặp giá trị vào tên cột 2
-        ContentValues contentValues = new ContentValues();
-        contentValues.put("idHistory",history.getIdHistory());
-        contentValues.put("idCustom",history.getIdCustom());
-        contentValues.put("idUser",history.getIdUser());
 
+        // ghép cặp giá trị vào tên cột
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("IdTopic",history.getIdTopic());
+        contentValues.put("IdUser",history.getIdUser());
+        contentValues.put("Time",history.getTime());
+
+        // truy vấn
         long kq = sqLiteDatabase.insert("History", null, contentValues);
 
+        // trả về kết quả truy vấn
         if (kq > 0){
             return true;
         } else{
@@ -38,16 +42,22 @@ public class HistoryDao {
         }
     }
 
+
+    // update history vào database
     public boolean updateHistory(History history){
         sqLiteDatabase = Database.initDatabase(context,DATABASE_NAME);
-        // ghép cặp giá trị vào tên cột 2
-        ContentValues contentValues = new ContentValues();
-        contentValues.put("idHistory",history.getIdHistory());
-        contentValues.put("idCustom",history.getIdCustom());
-        contentValues.put("idUser",history.getIdUser());
-        // truy vấn 3
-        long kq = sqLiteDatabase.update("History", contentValues, "idHistory ="+new int[]{history.getIdHistory()},null);
 
+        // ghép cặp giá trị vào tên cột
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("IdHistory",history.getIdHistory());
+        contentValues.put("IdTopic",history.getIdTopic());
+        contentValues.put("IdUser",history.getIdUser());
+        contentValues.put("Time",history.getTime());
+
+        // truy vấn
+        long kq = sqLiteDatabase.update("History", contentValues, "IdHistory ="+new int[]{history.getIdHistory()},null);
+
+        // trả về kết quả truy vấn
         if (kq > 0){
             return true;
         } else{
@@ -55,11 +65,14 @@ public class HistoryDao {
         }
     }
 
-    public boolean deleteHistory(int id) {
+    // xóa history trong database
+    public boolean deleteHistory(int idHistory) {
         sqLiteDatabase = Database.initDatabase(context,DATABASE_NAME);
-        // truy vấn 3
-        long kq = sqLiteDatabase.delete("History", "idHistory =" + new int[]{id}, null);
 
+        // truy vấn
+        long kq = sqLiteDatabase.delete("History", "IdHistory =" + new int[]{idHistory}, null);
+
+        // trả về kết quả truy vấn
         if (kq > 0) {
             return true;
         } else {
@@ -67,23 +80,32 @@ public class HistoryDao {
         }
     }
 
+    // lấy danh sách tất cả trong bảng history
     public List<History> getAllHistory(){
         sqLiteDatabase = Database.initDatabase(context,DATABASE_NAME);
         List<History> list = new ArrayList<>();
+
+        // truy vấn trong database
         String sql = "SELECT * FROM History";
+
+        // đưa các thành phần truy vấn được vào list
         Cursor cursor = sqLiteDatabase.rawQuery(sql,null);
         list.clear();
         if (cursor.getCount() > 0) {
             cursor.moveToFirst();
             while (!cursor.isAfterLast()) {
+                // Lấy giá trị từ con trỏ
                 int IDHistory = cursor.getInt(0);
-                int IDCustom = cursor.getInt(1);
+                int IDTopic = cursor.getInt(1);
                 int IDUser = cursor.getInt(2);
+                String time = cursor.getString(3);
 
+                // add vào Object
                 History history = new History();
                 history.setIdHistory(IDHistory);
-                history.setIdCustom(IDCustom);
+                history.setIdTopic(IDTopic);
                 history.setIdUser(IDUser);
+                history.setTime(time);
 
                 list.add(history);
                 cursor.moveToNext();
@@ -92,24 +114,66 @@ public class HistoryDao {
         return list;
     }
 
-    public List<History> timKiem(int datetk) {
+    // Tìm kiếm history theo idHistory trong database
+    public List<History> timKiem(int idHistory) {
         sqLiteDatabase = Database.initDatabase(context,DATABASE_NAME);
         List<History> list = new ArrayList<>();
-        String sql = "SELECT * FROM History WHERE idHistory LIKE '%" + datetk + "%'";
 
+        // truy vấn trong database
+        String sql = "SELECT * FROM History WHERE IdHistory LIKE '" + idHistory + "'";
         Cursor cursor = sqLiteDatabase.rawQuery(sql,null);
+
+        // đưa các thành phần truy vấn được vào list
         list.clear();
         if (cursor.getCount() > 0) {
             cursor.moveToFirst();
             while (!cursor.isAfterLast()) {
+                // Lấy giá trị từ con trỏ
                 int IDHistory = cursor.getInt(0);
-                int IDCustom = cursor.getInt(1);
+                int IDTopic = cursor.getInt(1);
                 int IDUser = cursor.getInt(2);
+                String time = cursor.getString(3);
 
+                // add vào Object
                 History history = new History();
                 history.setIdHistory(IDHistory);
-                history.setIdCustom(IDCustom);
+                history.setIdTopic(IDTopic);
                 history.setIdUser(IDUser);
+                history.setTime(time);
+
+                list.add(history);
+                cursor.moveToNext();
+            }
+        }
+        return list;
+    }
+
+    // Tìm kiếm lịch sử người dùng
+    public List<History> timKiemUs(int idUser) {
+        sqLiteDatabase = Database.initDatabase(context,DATABASE_NAME);
+        List<History> list = new ArrayList<>();
+
+        // truy vấn trong database
+        String sql = "SELECT * FROM History WHERE IdUser LIKE '" + idUser + "'";
+        Cursor cursor = sqLiteDatabase.rawQuery(sql,null);
+
+        // đưa các thành phần truy vấn được vào list
+        list.clear();
+        if (cursor.getCount() > 0) {
+            cursor.moveToFirst();
+            while (!cursor.isAfterLast()) {
+                // Lấy giá trị từ con trỏ
+                int IDHistory = cursor.getInt(0);
+                int IDTopic = cursor.getInt(1);
+                int IDUser = cursor.getInt(2);
+                String time = cursor.getString(3);
+
+                // add vào Object
+                History history = new History();
+                history.setIdHistory(IDHistory);
+                history.setIdTopic(IDTopic);
+                history.setIdUser(IDUser);
+                history.setTime(time);
 
                 list.add(history);
                 cursor.moveToNext();

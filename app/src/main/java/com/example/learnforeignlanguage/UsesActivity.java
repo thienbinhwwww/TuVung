@@ -2,6 +2,7 @@ package com.example.learnforeignlanguage;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
@@ -48,5 +49,13 @@ public class UsesActivity extends AppCompatActivity {
 
     public void cancel(View view){
         finish();
+    }
+    public void logOut(View view){
+        Intent intent = new Intent(UsesActivity.this,LoginActivity.class);
+        startActivity(intent);
+    }
+    public void history(View view){
+        Intent intent = new Intent(UsesActivity.this,HistoryActivity.class);
+        startActivity(intent);
     }
 }

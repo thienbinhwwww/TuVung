@@ -2,18 +2,18 @@ package com.example.learnforeignlanguage.mode;
 
 public class Vocabulary {
     private int idVocabulary;
+    private int idTopic;
     private String vocabulary;
     private String means;
-    private String pronounce;
 
     public Vocabulary() {
     }
 
-    public Vocabulary(int idVocabulary, String vocabulary, String means, String pronounce) {
+    public Vocabulary(int idVocabulary, int idTopic, String vocabulary, String means) {
         this.idVocabulary = idVocabulary;
         this.vocabulary = vocabulary;
         this.means = means;
-        this.pronounce = pronounce;
+        this.idTopic = idTopic;
     }
 
     public int getIdVocabulary() {
@@ -40,11 +40,11 @@ public class Vocabulary {
         this.means = means;
     }
 
-    public String getPronounce() {
-        return pronounce;
+    public int getIdTopic() {
+        return idTopic;
     }
 
-    public void setPronounce(String pronounce) {
-        this.pronounce = pronounce;
+    public void setIdTopic(int idTopic) {
+        this.idTopic = idTopic;
     }
 }

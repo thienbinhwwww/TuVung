@@ -6,16 +6,18 @@ public class User {
     private String phoneNumber;
     private String userName;
     private String password;
+    private String rank;
 
     public User() {
     }
 
-    public User(int idUser, String email, String phoneNumber, String userName, String password) {
+    public User(int idUser, String email, String phoneNumber, String userName, String password, String rank) {
         this.idUser = idUser;
         this.email = email;
         this.phoneNumber = phoneNumber;
         this.userName = userName;
         this.password = password;
+        this.rank = rank;
     }
 
     public int getIdUser() {
@@ -56,5 +58,13 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getRank(){
+        return rank;
+    }
+
+    public void setRank(String rank){
+        this.rank = rank;
     }
 }

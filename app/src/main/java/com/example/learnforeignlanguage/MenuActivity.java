@@ -11,6 +11,7 @@ import android.widget.TextView;
 public class MenuActivity extends AppCompatActivity {
     SharedPreferences sharedPreferences;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,7 +40,7 @@ public class MenuActivity extends AppCompatActivity {
 
 //    Chức năng bài học chủ đề
     public void baiHocChuDe(View view){
-        Intent intent = new Intent(MenuActivity.this,ThemeActivity.class);
+        Intent intent = new Intent(MenuActivity.this, TopicActivity.class);
         startActivity(intent);
     }
 
@@ -51,18 +52,4 @@ public class MenuActivity extends AppCompatActivity {
 //        mediaPlayer.start();
     }
 
-//    Chức năng lịch sử học
-    public void lichSuHoc(View view){
-
-//        try {
-//            MediaPlayer mediaPlayer = new MediaPlayer();
-//            Uri uri = Uri.parse("https://soundoftext.nyc3.digitaloceanspaces.com/24dd8160-c7d4-11e7-9df0-2f554923557b.mp3");
-//            mediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
-//            mediaPlayer.setDataSource(MenuActivity.this,uri);
-//            mediaPlayer.prepare();
-//            mediaPlayer.start();
-//        }catch (Exception ex){
-//            Log.d("s",ex.toString());
-//        }
-    }
 }
