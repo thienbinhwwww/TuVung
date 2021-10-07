@@ -5,14 +5,14 @@ plugins {
 apply plugin: 'realm-android'
 
 android {
-    compileSdkVersion 30
+    compileSdkVersion 29
     buildToolsVersion "30.0.2"
 
     defaultConfig {
         applicationId "com.example.learnforeignlanguage"
         applicationId "com.mongodb.realmsnippets"
         minSdkVersion 21
-        targetSdkVersion 30
+        targetSdkVersion 29
         versionCode 1
         versionName "1.0"
 

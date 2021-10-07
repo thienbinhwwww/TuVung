@@ -50,13 +50,10 @@ public class AdapterVocabulary extends BaseAdapter {
         tv_vocabulary.setText(listVocabulary.get(i).getVocabulary());
         tv_m.setText(listVocabulary.get(i).getMeans());
 
-        textToSpeech = new TextToSpeech(context.getApplicationContext(), new TextToSpeech.OnInitListener() {
-            @Override
-            public void onInit(int i) {
-                if(i == TextToSpeech.SUCCESS){
-                    // Lựa chọn ngôn ngữ
-                    int lang = textToSpeech.setLanguage(Locale.ENGLISH);
-                }
+        textToSpeech = new TextToSpeech(context.getApplicationContext(), i1 -> {
+            if(i1 == TextToSpeech.SUCCESS){
+                // Lựa chọn ngôn ngữ
+                int lang = textToSpeech.setLanguage(Locale.ENGLISH);
             }
         });
         btn_at.setOnClickListener(new View.OnClickListener() {
