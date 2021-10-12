@@ -22,16 +22,12 @@ public class LoginActivity extends AppCompatActivity {
     List<User> list;
     SharedPreferences sharedPreferences;
     SharedPreferences.Editor editor;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-
         anhXa();
-
     }
-
     private void anhXa() {
         userDao= new UserDao(this);
         edt_userName = findViewById(R.id.edt_login_userName);
@@ -39,7 +35,6 @@ public class LoginActivity extends AppCompatActivity {
         sharedPreferences = getSharedPreferences("phong",MODE_PRIVATE);
         editor = sharedPreferences.edit();
     }
-
     public void  login(View view){
          list = userDao.timUserName(edt_userName.getText().toString());
          if(list.size()==0){

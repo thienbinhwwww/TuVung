@@ -42,6 +42,18 @@ public class ListGameActivity extends AppCompatActivity {
     public void gameIII(View view){
         createHistory();
         finish();
+        Intent intent = new Intent(ListGameActivity.this,GameIIIActivity.class);
+        startActivity(intent);
+    }
+    public void gameIV(View view){
+        createHistory();
+        finish();
+        Intent intent = new Intent(ListGameActivity.this,GameIVActivity.class);
+        startActivity(intent);
+    }
+    public void listVocabulary(View view){
+        createHistory();
+        finish();
         Intent intent = new Intent(ListGameActivity.this,ListVocabularyActivity.class);
         startActivity(intent);
     }

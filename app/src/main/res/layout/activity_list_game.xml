@@ -7,18 +7,20 @@
     android:background="@drawable/bacground_all"
     tools:context=".ListGameActivity">
 
+    <!--    GAME 1-->
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/ConLayout_listGame_game1"
         android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_height="160dp"
         android:layout_marginStart="32dp"
         android:layout_marginTop="32dp"
-        android:layout_marginEnd="32dp"
-        android:layout_marginBottom="16dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
         android:background="@drawable/bacground_layot_listview"
+        android:minWidth="110dp"
         android:onClick="gameI"
-        app:layout_constraintBottom_toTopOf="@+id/ConLayout_listGame_game2"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/ConLayout_listGame_game3"
+        app:layout_constraintEnd_toStartOf="@+id/ConLayout_listGame_game2"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
@@ -53,21 +55,22 @@
             app:srcCompat="@drawable/iconl" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-
+    <!--    GAME 2-->
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/ConLayout_listGame_game2"
         android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="16dp"
+        android:layout_height="160dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="32dp"
         android:layout_marginEnd="32dp"
-        android:layout_marginBottom="16dp"
+        android:layout_marginBottom="8dp"
         android:background="@drawable/bacground_layot_listview"
+        android:minWidth="110dp"
         android:onClick="gameII"
-        app:layout_constraintBottom_toTopOf="@+id/ConLayout_listGame_game3"
+        app:layout_constraintBottom_toTopOf="@+id/ConLayout_listGame_game4"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ConLayout_listGame_game1">
+        app:layout_constraintStart_toEndOf="@+id/ConLayout_listGame_game1"
+        app:layout_constraintTop_toTopOf="parent">
 
         <TextView
             android:id="@+id/textView10"
@@ -99,21 +102,109 @@
             app:srcCompat="@drawable/iconll" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-
+    <!--    GAME 3-->
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/ConLayout_listGame_game3"
         android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_height="160dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:background="@drawable/bacground_layot_listview"
+        android:minWidth="110dp"
+        android:onClick="gameIII"
+        app:layout_constraintEnd_toStartOf="@+id/ConLayout_listGame_game4"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ConLayout_listGame_game1">
+
+        <TextView
+            android:id="@+id/textView11"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:text="Game 3"
+            android:textColor="@color/white"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/imageView9"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginEnd="32dp"
+            android:layout_marginBottom="16dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView11"
+            app:srcCompat="@drawable/iconll" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+    <!--    GAME 4-->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/ConLayout_listGame_game4"
+        android:layout_width="0dp"
+        android:layout_height="160dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="32dp"
+        android:background="@drawable/bacground_layot_listview"
+        android:minWidth="110dp"
+        android:onClick="gameIV"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/ConLayout_listGame_game3"
+        app:layout_constraintTop_toBottomOf="@+id/ConLayout_listGame_game2">
+
+        <TextView
+            android:id="@+id/textView12"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:text="Game 4"
+            android:textColor="@color/white"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/imageView10"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginEnd="32dp"
+            android:layout_marginBottom="16dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView12"
+            app:srcCompat="@drawable/iconll" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <!--    DANH Sách từ -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/ConLayout_listVocabulary"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="32dp"
-        android:layout_marginBottom="32dp"
         android:background="@drawable/bacground_layot_listview"
-        android:onClick="gameIII"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:onClick="listVocabulary"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ConLayout_listGame_game2">
+        app:layout_constraintTop_toBottomOf="@+id/ConLayout_listGame_game3">
 
         <TextView
             android:id="@+id/textView19"
