@@ -12,11 +12,14 @@ import com.example.learnforeignlanguage.mode.User;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class SignUpActivity extends AppCompatActivity {
     EditText edt_userName,edt_email,edt_phoneNumber,edt_password,edt_passwordRetype;
     UserDao userDao;
     List<User> listUser;
+    Pattern pattern;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,10 +50,29 @@ public class SignUpActivity extends AppCompatActivity {
         String phoneNumber = edt_phoneNumber.getText().toString();
         String password = edt_password.getText().toString();
         String passwordRetype = edt_passwordRetype.getText().toString();
+        Pattern p = Pattern.compile("[^a-z0-9 ]", Pattern.CASE_INSENSITIVE);
+        Matcher m = p.matcher(userName);
+        boolean b = m.find();
 
         while (true){
             if(!(ck(userName)&&ck(email)&&ck(phoneNumber)&&ck(password)&&ck(passwordRetype))){
                 Toast.makeText(this,"Không để trống ô nhập",Toast.LENGTH_LONG).show();
+                break;
+            }
+            if (b){
+                Toast.makeText(this,"User Name không được chứa các ký tự đặc biệt",Toast.LENGTH_LONG).show();
+                break;
+            }
+            if(!(phoneNumber.length()==10)){
+                Toast.makeText(this,"số điện thoại bao gồm 10 số",Toast.LENGTH_LONG).show();
+                break;
+            }
+            if (userName.length()<5 || userName.length()>=15){
+                Toast.makeText(this,"User Name chỉ bao gồm 5-15 ký tự",Toast.LENGTH_LONG).show();
+                break;
+            }
+            if(password.length()<5 || password.length()>=15){
+                Toast.makeText(this,"Mật khẩu chỉ bao gồm 5-15 ký tự",Toast.LENGTH_LONG).show();
                 break;
             }
             if (!password.equals(passwordRetype)){

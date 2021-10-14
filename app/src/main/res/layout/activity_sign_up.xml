@@ -57,7 +57,7 @@
         android:background="@drawable/bacground_layot_listview_theme"
         android:ems="10"
         android:hint="Số điện thoại"
-        android:inputType="textPersonName"
+        android:inputType="number|textPersonName|phone"
         android:padding="10dp"
         android:textColor="@color/textColor"
         android:textColorHint="#AEAEAE"
